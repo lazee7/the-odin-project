@@ -1,0 +1,69 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(
+    to right,
+    rgb(199, 210, 254),
+    rgb(254, 202, 202),
+    rgb(254, 249, 195)
+  );
+  color: #333;
+  font: 1rem / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+  padding: 1rem;
+}
+
+form {
+  width: 100%;
+}
+
+form h2 {
+  text-align: center;
+}
+
+form ul {
+  margin-top: 1rem;
+  padding: 1rem 0.8rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 70%;
+  margin-inline: auto;
+  border-radius: 0.7rem;
+}
+
+li {
+  list-style-type: none;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.8rem 0.5rem;
+  border-radius: 0.4rem;
+}
+
+input:invalid,
+textarea:invalid {
+  border: 1px solid tomato;
+}
+
+input:valid {
+  border: 1px solid black;
+}
+
+input:focus {
+  border: 1px solid blue;
+  outline: none;
+}
+
+input:invalid:required,
+textarea:invalid:required {
+  background-color: rgba(255, 0, 0, 0.1);
+}
