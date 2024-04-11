@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./assignment.css">
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="./assets/odin-lined.png" alt="">
+      <h1>odin</h1>
+    </div>
+    <p class="attribution">
+      photo by
+      <a href="">Halie West</a>
+      on
+      <a href="">Unsplash</a>
+    </p>
+  </aside>
+
+  <main>
+
+    <p class="paragraph">
+      This is not a real online service! You know you need something like
+      this in your life to help you realize your deepest dreams.
+      <br />
+      Sign up now to get started.
+      <br />
+      <br />
+      You know you want to.
+    </p>
+
+    <form>
+
+      <div class="form__wrap">
+        <p>Let's do this!</p>
+
+        <label>
+          first name
+          <input type="text" id="firstName" name="firstName" minlength="3" maxlength="20" required />
+        </label>
+
+        <label>
+          last name
+          <input type="text" id="lastName" name="lastName" required minlength="3" maxlength="20" />
+        </label>
+
+        <label>
+          email
+          <input type="email" id="email" name="email" required />
+        </label>
+
+        <label>
+          phone number
+          <input type="tel" id="phoneNumber" name="phoneNumber" minlength="11" maxlength="13" required />
+        </label>
+
+        <label>
+          password
+          <input type="password" id="password" name="password" required
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" />
+          <p id="error" class="error"></p>
+
+        </label>
+
+        <label>
+          confirm password
+          <input type="password" id="confirmPassword" name="confirmPassword" required
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" />
+        </label>
+
+      </div>
+      <button type="submit" class="create-account">create account</button>
+    </form>
+
+    <p class="login">Already have an account? <a href="#">Login</a></p>
+  </main>
+
+  <script src="assignment.js"></script>
+</body>
+
+</html>

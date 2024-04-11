@@ -1,60 +1,39 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <title>Form validation: Task 1</title>
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
 
-  <body>
-    <form>
-      <h2>Enter your support query</h2>
-      <ul>
-        <li>
-          <label for="uname">User name:</label>
-          <input
-            type="text"
-            name="uname"
-            id="uname"
-            minlength="5"
-            maxlength="20"
-            pattern="^[a-z]\.[a-z0-9]{3,4}"
-            required
-          />
-        </li>
-        <li>
-          <label for="email">Email address:</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            pattern="[\w]+@bigcorp.eu"
-            required
-          />
-        </li>
-        <li>
-          <label for="phone">Phone number:</label>
-          <input
-            type="tel"
-            name="phone"
-            id="phone"
-            pattern="^\d{10}|(\d{3}[ \.\-]){2}\d{4}$"
-            required
-          />
-        </li>
-        <li>
-          <label for="comment">Comment:</label>
-          <textarea
-            name="comment"
-            id="comment"
-            maxlength="200"
-            required
-          ></textarea>
-        </li>
-        <li>
-          <button type="submit">Submit comment</button>
-        </li>
-      </ul>
-    </form>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form validation: Task 1</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <form>
+    <h2>Enter your support query</h2>
+    <ul>
+      <li>
+        <label for="uname">User name:</label>
+        <input type="text" name="uname" id="uname" minlength="5" maxlength="20" pattern="^[a-z]\.[a-z0-9]{3,4}"
+          required />
+      </li>
+      <li>
+        <label for="email">Email address:</label>
+        <input type="email" name="email" id="email" pattern="[\w]+@bigcorp.eu" required />
+      </li>
+      <li>
+        <label for="phone">Phone number:</label>
+        <input type="tel" name="phone" id="phone" pattern="^\d{10}|(\d{3}[ \.\-]){2}\d{4}$" required />
+      </li>
+      <li>
+        <label for="comment">Comment:</label>
+        <textarea name="comment" id="comment" maxlength="200" required></textarea>
+      </li>
+      <li>
+        <button type="submit">Submit comment</button>
+      </li>
+    </ul>
+  </form>
+</body>
+
 </html>

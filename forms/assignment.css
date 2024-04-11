@@ -1,0 +1,196 @@
+@font-face {
+  font-family: "NorseBold";
+  src: url("./assets/Norse-Bold.otf");
+  font-weight: bold;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.5;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1rem;
+}
+
+.sidebar {
+  border: 1px solid #000000;
+  position: relative;
+  min-height: 25vh;
+  background: url(./assets/halie-west-25xggax4bSA-unsplash.jpg) no-repeat center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  gap: 2rem;
+  padding-block: 1rem;
+}
+
+.logo {
+  font-family: NorseBold;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  height: min-content;
+  justify-content: center;
+  margin-top: 3rem;
+  padding-block: 0.5rem;
+
+  img {
+    width: 4rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+}
+
+a {
+  color: inherit;
+}
+
+.attribution {
+  text-align: center;
+
+  a {
+    transition: color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover {
+      color: blue;
+    }
+  }
+}
+
+main {
+  width: 100%;
+  background-color: rgb(248, 244, 244);
+}
+
+.paragraph {
+  font-weight: 600;
+  padding: 2rem;
+}
+
+.form__wrap {
+  background-color: white;
+  padding: 1rem 2rem;
+  margin-block: 1rem;
+  display: grid;
+  row-gap: 1.3rem;
+  column-gap: 3.8rem;
+
+  p {
+    font-weight: 500;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1.2px;
+  }
+
+  input {
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.3rem;
+    outline: none;
+    border: 1px solid #e5e7eb;
+
+    &:focus {
+      border-color: blue;
+    }
+
+    &:invalid {
+      border-color: tomato;
+    }
+
+    &:valid {
+      border-color: #e5e7eb;
+    }
+
+    /* &:invalid:required {
+      border-color: red;
+    } */
+  }
+}
+
+.error {
+  text-transform: lowercase;
+  color: tomato;
+}
+
+.create-account {
+  background-color: #596d48;
+  color: #ffffff;
+  text-transform: capitalize;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.3rem;
+
+  margin-inline: 2rem;
+}
+
+.login {
+  padding: 2rem;
+
+  a {
+    color: #596d48;
+    font-weight: 600;
+  }
+}
+
+@media screen and (min-width: 47.8125rem) {
+  body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  main {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .sidebar {
+    min-height: 100vh;
+  }
+
+  .form__wrap {
+    grid-template-columns: repeat(2, 1fr);
+    padding-inline: 4rem;
+
+    p {
+      grid-column: span 2;
+    }
+  }
+
+  .paragraph {
+    padding: 0 4rem 2rem;
+  }
+
+  .create-account {
+    margin-inline: 4rem;
+  }
+
+  .login {
+    padding-inline: 4rem;
+  }
+}
+
+@media screen and (min-width: 64rem) {
+  .form__wrap {
+    padding-right: 15rem;
+  }
+}
