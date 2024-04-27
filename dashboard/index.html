@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Odin Project - Dashboard Task</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar hide">
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="./assets/icons/view-dashboard.svg" alt="" />
+      <h1>Dashboard</h1>
+    </div>
+
+    <nav class="">
+      <ul>
+        <li>
+          <img src="./assets/icons/home.svg" alt="" />
+          <span>home</span>
+        </li>
+        <li>
+          <img src="./assets/icons/card-account-details.svg" alt="" />
+          <span>profile</span>
+        </li>
+
+        <li>
+          <img src="./assets/icons/message.svg" alt="" />
+          <span>messages</span>
+        </li>
+
+        <li>
+          <img src="./assets/icons/clock-outline.svg" alt="" />
+          <span>history</span>
+        </li>
+
+        <li>
+          <img src="./assets/icons/note-multiple-outline.svg" alt="" />
+          <span>tasks</span>
+        </li>
+
+        <li>
+          <img src="./assets/icons/account-group.svg" alt="" />
+          <span>communities</span>
+        </li>
+      </ul>
+    </nav>
+
+    <nav>
+      <ul>
+        <li>
+          <img src="./assets/icons/cog.svg" alt="" />
+          <span>settings</span>
+        </li>
+        <li>
+          <img src="./assets/icons/help-box.svg" alt="" />
+          <span>support</span>
+        </li>
+        <li>
+          <img src="./assets/icons/shield-check.svg" alt="" />
+          <span>privacy</span>
+        </li>
+      </ul>
+    </nav>
+
+  </aside>
+
+  <!-- HEADER -->
+  <header class="main__header">
+    <!-- First row -->
+    <div class="header__first-row">
+      <div class="search-wrap">
+        <img src="./assets/icons/magnify.svg" alt="" />
+        <input type="search" name="search" id="search" aria-label="search" />
+      </div>
+
+      <div class="others">
+        <a aria-label="notifications" href="#">
+          <img src="./assets/icons/bell-ring-outline.svg" alt="" />
+        </a>
+
+        <img src="./assets/images/cat.jpeg" alt="" class="avatar">
+        <p>Morgan Oakley</p>
+      </div>
+    </div>
+
+    <!-- Second row -->
+    <div class="header__second-row">
+      <div class="user">
+        <img src="./assets/images/cat.jpeg" alt="" class="avatar">
+        <div>
+          <p>Hi there,</p>
+          <p>Morgan Oakley (@morgan)</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button type="button">new</button>
+        <button type="button">upload</button>
+        <button type="button">share</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    <section class="projects">
+      <h2>your projects</h2>
+      <div class="projects__list">
+        <article>
+          <h3>super cool project</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, fugiat?</p>
+          <div class="controls">
+            <button type="button" aria-label="favourite">
+              <img src="./assets/icons/star-plus-outline.svg" alt="">
+            </button>
+
+            <button type="button" aria-label="view">
+              <img src="./assets/icons/eye-plus-outline.svg" alt="">
+            </button>
+            <button type="button" aria-label="share" class="share">
+              <img src="./assets/icons/share-variant-outline.svg" alt="">
+            </button>
+          </div>
+        </article>
+
+        <article>
+          <h3>less cool project</h3>
+          <p>dolores totam necessitatibus
+            repellendus rerum, voluptates dolorem. Laboriosam quos porro, explicabo possimus sapiente asperiores cum.
+          </p>
+          <div class="controls">
+            <button type="button" aria-label="favourite">
+              <img src="./assets/icons/star-plus-outline.svg" alt="">
+            </button>
+
+            <button type="button" aria-label="view">
+              <img src="./assets/icons/eye-plus-outline.svg" alt="">
+            </button>
+            <button type="button" aria-label="share" class="share">
+              <img src="./assets/icons/share-variant-outline.svg" alt="">
+            </button>
+          </div>
+        </article>
+
+        <article>
+          <h3>impossible app</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, fugiat?</p>
+          <div class="controls">
+            <button type="button" aria-label="favourite">
+              <img src="./assets/icons/star-plus-outline.svg" alt="">
+            </button>
+
+            <button type="button" aria-label="view">
+              <img src="./assets/icons/eye-plus-outline.svg" alt="">
+            </button>
+            <button type="button" aria-label="share" class="share">
+              <img src="./assets/icons/share-variant-outline.svg" alt="">
+            </button>
+          </div>
+        </article>
+
+        <article>
+          <h3>easy peasy app</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, fugiat?</p>
+          <div class="controls">
+            <button type="button" aria-label="favourite">
+              <img src="./assets/icons/star-plus-outline.svg" alt="">
+            </button>
+
+            <button type="button" aria-label="view">
+              <img src="./assets/icons/eye-plus-outline.svg" alt="">
+            </button>
+            <button type="button" aria-label="share" class="share">
+              <img src="./assets/icons/share-variant-outline.svg" alt="">
+            </button>
+          </div>
+        </article>
+
+        <article>
+          <h3>ad blocker</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, fugiat?</p>
+          <div class="controls">
+            <button type="button" aria-label="favourite">
+              <img src="./assets/icons/star-plus-outline.svg" alt="">
+            </button>
+
+            <button type="button" aria-label="view">
+              <img src="./assets/icons/eye-plus-outline.svg" alt="">
+            </button>
+            <button type="button" aria-label="share" class="share">
+              <img src="./assets/icons/share-variant-outline.svg" alt="">
+            </button>
+          </div>
+        </article>
+
+        <article>
+          <h3>money maker</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, fugiat?</p>
+          <div class="controls">
+            <button type="button" aria-label="favourite">
+              <img src="./assets/icons/star-plus-outline.svg" alt="">
+            </button>
+
+            <button type="button" aria-label="view">
+              <img src="./assets/icons/eye-plus-outline.svg" alt="">
+            </button>
+            <button type="button" aria-label="share" class="share">
+              <img src="./assets/icons/share-variant-outline.svg" alt="">
+            </button>
+          </div>
+        </article>
+
+        <article>
+          <h3>world peace builder</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, fugiat?</p>
+          <div class="controls">
+            <button type="button" aria-label="favourite">
+              <img src="./assets/icons/star-plus-outline.svg" alt="">
+            </button>
+
+            <button type="button" aria-label="view">
+              <img src="./assets/icons/eye-plus-outline.svg" alt="">
+            </button>
+            <button type="button" aria-label="share" class="share">
+              <img src="./assets/icons/share-variant-outline.svg" alt="">
+            </button>
+          </div>
+        </article>
+
+        <article>
+          <h3>no traffic maker</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, fugiat?</p>
+          <div class="controls">
+            <button type="button" aria-label="favourite">
+              <img src="./assets/icons/star-plus-outline.svg" alt="">
+            </button>
+
+            <button type="button" aria-label="view">
+              <img src="./assets/icons/eye-plus-outline.svg" alt="">
+            </button>
+            <button type="button" aria-label="share" class="share">
+              <img src="./assets/icons/share-variant-outline.svg" alt="">
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="content__second-row">
+      <section class="announcements">
+        <h2>announcements</h2>
+
+        <div class="announcements__list">
+          <article>
+            <h3>site maintenance</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur, reprehenderit.</p>
+          </article>
+
+          <article>
+            <h3>community share day</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, quibusdam.</p>
+          </article>
+
+          <article>
+            <h3>updated privacy policy</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, soluta.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="trending">
+
+        <h2>trending</h2>
+
+        <div class="trending__list">
+          <div class="trending__item">
+            <img src="./assets/images/cat.jpeg" alt="">
+            <div>
+              <h4>@tegan</h4>
+              <p>world peace builder</p>
+            </div>
+          </div>
+
+          <div class="trending__item">
+            <img src="./assets/images/cat.jpeg" alt="">
+            <div>
+              <h4>@morgan</h4>
+              <p>super cool project</p>
+            </div>
+          </div>
+
+          <div class="trending__item">
+            <img src="./assets/images/cat.jpeg" alt="">
+            <div>
+              <h4>@kendall</h4>
+              <p>life changing app</p>
+            </div>
+          </div>
+
+          <div class="trending__item">
+            <img src="./assets/images/cat.jpeg" alt="">
+            <div>
+              <h4>@alex</h4>
+              <p>no traffic maker</p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+</body>
+
+</html>
