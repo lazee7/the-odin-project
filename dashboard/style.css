@@ -73,17 +73,18 @@ img {
 /* SIDEBAR */
 
 .sidebar {
-  display: none;
+  display: flex;
   background-color: var(--light-blue);
-  width: 100%;
+  width: 70%;
   color: white;
   padding: 1rem;
   flex-direction: column;
   gap: 2rem;
-  position: sticky;
+  position: fixed;
   top: 0;
   padding-right: 3rem;
   height: 100vh;
+  z-index: 50;
 }
 
 .logo,
@@ -102,6 +103,13 @@ img {
   gap: 1.3rem;
 }
 
+#open-sidebar {
+}
+
+#close-menu {
+  margin-left: auto;
+}
+
 .sidebar li img {
   width: 1.5rem;
 }
@@ -113,16 +121,15 @@ img {
 /* HEADER SECTION */
 
 .main__header .header__first-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   align-items: center;
+  gap: 1rem;
 
   .search-wrap {
     width: 100%;
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    grid-column: span 2;
 
     input {
       width: 100%;
@@ -139,6 +146,11 @@ img {
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    .avatar,
+    p {
+      display: none;
+    }
   }
 }
 
@@ -299,6 +311,8 @@ img {
 
   .sidebar {
     grid-area: sidebar;
+    position: sticky;
+    width: 100%;
   }
 
   .sidebar.hide {
@@ -319,6 +333,21 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .main__header .header__first-row {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    .search-wrap {
+      grid-column: span 2;
+    }
+
+    .others .avatar,
+    .others p {
+      display: block;
+    }
+  }
+
   .main__header .header__second-row {
     flex-direction: row;
     align-items: center;
@@ -328,6 +357,11 @@ img {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  #open-sidebar,
+  #close-menu {
+    display: none;
   }
 }
 
@@ -342,6 +376,6 @@ img {
 
   .content__second-row {
     grid-template-columns: auto;
-    gap: 0;
+    gap: 2rem;
   }
 }
