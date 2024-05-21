@@ -1,0 +1,150 @@
+:root {
+  --blue: #0284c7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+}
+
+img,
+svg {
+  width: 100%;
+  display: block;
+}
+
+.main__header {
+  background-image: linear-gradient(-192deg, var(--blue) 55%, white 45%);
+  position: relative;
+  min-height: 40vh;
+  background-color: skyblue;
+  padding: 2rem 1rem;
+
+  .image {
+    height: 25rem;
+    width: 93%;
+    margin-inline: auto;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    h1 {
+      position: absolute;
+      bottom: 0;
+      font-size: 3.6rem;
+      margin-inline: 0.8rem;
+    }
+  }
+
+  .content {
+    width: 95%;
+    margin-inline: auto;
+  }
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  img {
+    width: 2rem;
+  }
+}
+
+.project__card .project__image {
+  background-color: tomato;
+}
+
+.project__card:nth-child(2) .project__image {
+  background-color: palevioletred;
+}
+
+.project__card:nth-child(3) .project__image {
+  background-color: purple;
+}
+
+.project__card:nth-child(4) .project__image {
+  background-color: chocolate;
+}
+
+.project__card:nth-child(5) .project__image {
+  background-color: teal;
+}
+
+.project__card:nth-child(3) .project__image {
+  background-color: green;
+}
+
+.project__title {
+  display: flex;
+
+  .github {
+    margin-left: auto;
+    margin-right: 0.3rem;
+  }
+
+  img {
+    width: 1rem;
+  }
+}
+
+.main__footer {
+  background-color: var(--blue);
+
+  .content {
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 47.8125rem) {
+  .main__header {
+    .image {
+      position: static;
+    }
+  }
+}
