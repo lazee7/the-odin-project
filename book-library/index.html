@@ -5,10 +5,97 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Library</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <h1>hello</h1>
+  <header>
+    <h1>Book Library</h1>
+  </header>
+
+  <main>
+    <button type="button" id="open-new-book-modal-btn"> new book</button>
+    <dialog id="new-book-modal" class="modal">
+      <form id="new-book-form" class="new-book-form" role="dialog">
+        <label class="field">
+          <span>book title</span>
+          <input type="text" name="title" id="title" placeholder="The Horbit" required />
+        </label>
+
+        <label class="field">
+
+          <span>author</span>
+
+          <input type="text" name="author" id="author" placeholder="J.R.R. Tolkien" required />
+        </label>
+
+
+        <label class="field">
+          <span>pages</span>
+          <input type="number" name="pages" id="pages" placeholder="295" required />
+        </label>
+
+        <label class="field">
+
+          <input type="checkbox" name="read" id="read" />
+          <span>read</span>
+        </label>
+
+
+        <div class="controls">
+          <button type="button" id="close-new-book-modal-btn"> cancel</button>
+          <button type="submit">confirm</button>
+        </div>
+      </form>
+    </dialog>
+
+    <section class="books">
+
+      <table class="library" data-empty="false">
+        <caption>My books</ca>
+
+        <thead>
+          <tr>
+            <th>s/n</th>
+            <th>title</th>
+            <th>author</th>
+            <th>pages</th>
+            <th>read</th>
+          </tr>
+        </thead>
+
+        <tbody class="books__list">
+          <tr>
+            <td>1</td>
+            <td>the horbit</td>
+            <td>Toilken</td>
+            <td>295</td>
+            <td>yes</td>
+            <td class="controls">
+              <button>toggle</button>
+              <button>delete</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>2</td>
+            <td>harry porter</td>
+            <td>bernice paul</td>
+            <td>300</td>
+            <td>no</td>
+            <td class="controls">
+              <button>toggle</button>
+              <button>delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="empty__list">
+        <p>no books in library</p>
+      </div>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
