@@ -8,7 +8,7 @@ const closeNewBookModalBtn = document.getElementById(
 );
 const table = document.querySelector(".library");
 
-const booksListEl = document.querySelector(".books__list");
+const booksListEl = table.querySelector(".books__list");
 
 const myLibrary = [];
 
@@ -84,27 +84,48 @@ function createNewElement(type, content = null) {
  */
 function createRow(book, index) {
   const row = createNewElement("tr");
+
+  row.classList.add("books__row");
+
   const serialNo = createNewElement("td", index + 1);
   const title = createNewElement("td", book.title);
+
+  title.classList.add("title");
+
   const author = createNewElement("td", book.author);
+
+  author.classList.add("author");
 
   const pages = createNewElement("td", book.pages);
 
   const status = createNewElement("td", book.read ? "yes" : "not yet");
 
-  const controls = createNewElement("td");
+  const actions = createNewElement("td");
 
-  const toggleReadBtn = createNewElement("button", "toggle status");
+  actions.classList.add("controls");
 
-  const deleteBtn = createNewElement("button", "delete");
+  const toggleReadBtn = createNewElement("button");
+
+  toggleReadBtn.setAttribute("aria-label", "toggle read status");
+
+  toggleReadBtn.innerHTML = book.read
+    ? '<img src="./icons/eye.svg" alt="toggle read status icon" class="icon seen">'
+    : '<img src="./icons/eye.svg" alt="toggle read status icon" class="icon">';
+
+  const deleteBtn = createNewElement("button");
+
+  deleteBtn.setAttribute("aria-label", "delete book");
+
+  deleteBtn.innerHTML =
+    '<img src="./icons/delete.svg" alt="delete icon" class="icon">';
 
   toggleReadBtn.addEventListener("click", () => toggleReadStatus(index));
 
   deleteBtn.addEventListener("click", () => deleteBook(index));
 
-  controls.append(toggleReadBtn, deleteBtn);
+  actions.append(toggleReadBtn, deleteBtn);
 
-  row.append(serialNo, title, author, pages, status, controls);
+  row.append(serialNo, title, author, pages, status, actions);
 
   return row;
 }
@@ -161,3 +182,10 @@ openNewBookModalBtn.addEventListener("click", () => {
 closeNewBookModalBtn.addEventListener("click", closeNewBookModal);
 
 newBookForm.addEventListener("submit", addBookToLibrary);
+
+newBookModal.addEventListener("click", function (event) {
+  // close modal when the dialog backdrop is clicked
+  if (event.target === this) {
+    closeNewBookModal();
+  }
+});

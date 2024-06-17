@@ -4,6 +4,14 @@
   font-weight: 400;
 }
 
+:root {
+  --foreground: #0b173c;
+  --background: #ebecf0;
+  --primary: #1e42ac;
+  --secondary: #d6cdee;
+  --tertiay: #cdd6ee;
+}
+
 *,
 *::after,
 *::before {
@@ -16,13 +24,19 @@
 body {
   font-family: RobotoRegular;
   position: relative;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 button {
   background-color: inherit;
   border: none;
   cursor: pointer;
-  transition: 0.2s;
+  transition: opacity 0.2s, background-color 0.3s;
+}
+
+button:hover {
+  opacity: 0.8;
 }
 
 img,
@@ -30,12 +44,52 @@ svg {
   width: 100%;
 }
 
+.main__header {
+  min-height: 20vh;
+  display: grid;
+  place-items: center;
+}
+
+.icon {
+  transition: 0.4s;
+  width: 30px;
+}
+
+.seen {
+  filter: invert(56%) sepia(44%) saturate(4194%) hue-rotate(86deg)
+    brightness(119%) contrast(127%);
+}
+
+body::before {
+  --size: 60px;
+  --line: color-mix(in lch, canvasText 10%, hsl(226 69% 14% / 0.25));
+
+  content: "";
+  height: 70vh;
+  position: fixed;
+  background: linear-gradient(
+        90deg,
+        var(--line) 1px,
+        transparent 1px var(--size)
+      )
+      50% 50% / var(--size) var(--size),
+    linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% /
+      var(--size) var(--size);
+  mask: linear-gradient(-15deg, transparent 35%, white);
+  top: 0;
+  transform-style: flat;
+  pointer-events: none;
+  z-index: 1000;
+  width: 100%;
+  /* transform: skew(20deg); */
+  opacity: 0.3;
+}
+
 .modal {
   top: 20%;
   left: 50%;
   width: 70%;
   translate: -50% 0;
-  padding: 2rem 1rem;
   border: none;
   border-radius: 10px;
 }
@@ -50,12 +104,23 @@ svg {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+.row,
+.row-col {
+  display: flex;
+  gap: 1rem;
 }
 
 .row {
-  display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-end;
+}
+
+.row-col {
+  flex-direction: column;
 }
 
 .field {
@@ -72,10 +137,6 @@ input[type="text"] {
   width: 100%;
 }
 
-input[type="number"] {
-  width: 7rem;
-}
-
 input {
   border-radius: 8px;
   outline: none;
@@ -83,25 +144,88 @@ input {
   padding: 0.7rem 0.5rem;
 }
 
+input[type="number"] {
+  width: 4rem;
+  padding: 0.4rem 0.5rem;
+}
+
 .field:has(#read) {
   flex-direction: row;
-  gap: 0.3rem;
+  gap: 0.5rem;
   align-items: center;
   font: 1.2rem;
-}
 
-.controls {
-  align-self: flex-end;
-}
-
-.books__card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-
-  .controls {
-    align-self: flex-end;
+  span {
+    text-transform: none;
   }
+}
+
+main {
+  padding-block: 2rem;
+  width: 80%;
+  margin-inline: auto;
+}
+
+.new-book-container {
+  text-align: right;
+}
+
+#open-new-book-modal-btn {
+  background-color: var(--primary);
+  color: var(--background);
+  padding: 0.8rem 1.51rem;
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  border-radius: 0.6rem;
+}
+
+.library {
+  overflow-x: auto;
+  width: 100%;
+  max-width: min-content;
+  margin-inline: auto;
+  display: block;
+  border-collapse: collapse;
+  /* border: 1px solid black; */
+}
+
+.library > caption {
+  font-size: 2rem;
+  margin-block: 1.3rem;
+}
+
+.books__list {
+  white-space: nowrap;
+}
+
+th,
+td {
+  border: 1px solid black;
+}
+
+th {
+  position: sticky;
+  top: 0;
+
+  text-align: center;
+  text-transform: capitalize;
+  padding: 2rem;
+}
+
+td {
+  padding: 1rem;
+}
+
+.books__row:nth-child(even) {
+  background-color: rgba(205, 214, 238, 0.5);
+}
+
+.title {
+  min-width: 10rem;
+}
+
+.author {
+  min-width: 8rem;
 }
 
 .empty__list,
@@ -114,6 +238,42 @@ input {
   display: block;
 }
 
+.empty__list {
+  text-align: center;
+  margin-block: 3rem;
+  font-size: 1.2rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+.controls {
+  text-align: center;
+}
+
+.form-controls {
+  align-self: flex-end;
+  margin-top: 1rem;
+
+  button {
+    text-transform: capitalize;
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    color: white;
+    font-size: 1.1rem;
+  }
+
+  .cancel {
+    background-color: tomato;
+  }
+
+  .confirm {
+    background-color: var(--primary);
+  }
+}
+
 @media (width>=40.625rem) {
   .modal {
     width: 50%;
@@ -121,10 +281,14 @@ input {
 }
 @media (width>=47.8125rem) {
   .modal {
-    width: 30%;
+    width: 45%;
   }
 
   .books__card {
+    flex-direction: row;
+  }
+
+  .row-col {
     flex-direction: row;
   }
 }
