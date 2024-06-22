@@ -93,6 +93,7 @@ body::before {
   top: 20%;
   left: 50%;
   width: 70%;
+  max-width: 26rem;
   translate: -50% 0;
   border: none;
   border-radius: 10px;
