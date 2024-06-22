@@ -162,7 +162,7 @@ input[type="number"] {
 
 main {
   padding-block: 2rem;
-  width: 80%;
+  width: 90%;
   margin-inline: auto;
 }
 
@@ -274,6 +274,35 @@ h1 {
   }
 }
 
+dialog {
+  --opacity: 0;
+
+  scale: 0.5;
+
+  &,
+  &::backdrop {
+    opacity: var(--opacity);
+    transition: all 0.7s ease-in-out allow-discrete;
+  }
+
+  &:where([open]) {
+    --opacity: 1;
+    scale: 1;
+  }
+}
+
+/* not supported in firefox yet */
+@starting-style {
+  dialog:where([open]) {
+    --opacity: 0;
+    scale: 0.5;
+  }
+
+  dialog:where([open])::backdrop {
+    --opacity: 0;
+  }
+}
+
 @media (width>=40.625rem) {
   .modal {
     width: 50%;
@@ -290,5 +319,9 @@ h1 {
 
   .row-col {
     flex-direction: row;
+  }
+
+  main {
+    width: 80%;
   }
 }
