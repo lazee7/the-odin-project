@@ -1,13 +1,17 @@
-My Odin Project Assessments
+## My Odin Project Assessments
 
-1. [Tables Assessment](https://lazee7.github.io/the-odin-project/tables/)
+### Table of Contents
 
-2. [Form validation tasks 1 -2](https://lazee7.github.io/the-odin-project/forms/form-validation-tasks.html)
+1. [Tables Assessment](https://github.com/lazee7/the-odin-project/tables/)
 
-3. [Signup form Assessment](https://lazee7.github.io/the-odin-project/forms/assignment.html)
+2. [Form validation tasks 1 -2](https://github.com/lazee7/the-odin-project/forms/form-validation-tasks.html)
 
-4. [Dashboard Assessment](https://lazee7.github.io/the-odin-project/dashboard/index.html)
+3. [Signup form Assessment](https://github.com/lazee7/the-odin-project/forms/assignment.html)
 
-5. [Homepage Assessment - portfolio](https://lazee7.github.io/the-odin-project/portfolio-project/index.html)
+4. [Dashboard Assessment](https://github.com/lazee7/the-odin-project/dashboard/)
 
-6. [Book Library Assessment](https://lazee7.github.io/the-odin-project/book-library/index.html)
+5. [Homepage Assessment - portfolio](https://github.com/lazee7/the-odin-project/portfolio-project/)
+
+6. [Book Library Assessment](https://github.com/lazee7/the-odin-project/book-library/)
+
+7. [Tic-tac-toe Assessment](https://github.com/lazee7/the-odin-project/tic-tac-toe/)

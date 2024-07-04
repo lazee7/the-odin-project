@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe Game</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="">
+
+  <header>
+    <h1>Tic Tac Toe</h1>
+  </header>
+
+  <main>
+
+    <section class="start">
+
+      <dialog id="start-modal">
+
+        <h2>A Simple Tic tac toe Game!!</h2>
+
+        <p>Before proceeding please input your name</p>
+
+
+        <form method="dialog">
+          <input type="text" name="user-name" id="user-name" placeholder="Zee" />
+
+          <button type="submit">proceed</button>
+        </form>
+
+      </dialog>
+    </section>
+
+    <section class="game">
+
+      <button type="button" class="new-game">new game</button>
+
+      <div class="turn">
+        <p class="player-one player">
+          Player(x)
+        </p>
+        <p class="player-two player">
+          Computer(o)
+        </p>
+      </div>
+
+      <div class="board"></div>
+    </section>
+
+
+    <!-- MODAL DIALOG -->
+
+    <dialog id="game-modal">
+      <div class="modal">
+        <p>hello world</p>
+
+        <button type="button">replay</button>
+      </div>
+    </dialog>
+  </main>
+
+  <script src="./js/script.js"></script>
+</body>
+
+</html>

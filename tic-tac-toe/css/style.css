@@ -1,0 +1,159 @@
+@font-face {
+  font-family: 'RobotoRegular';
+  src: url('../../fonts/roboto/Roboto-Regular.ttf');
+  font-weight: 400;
+}
+
+:root {
+  --foreground: #ffffff;
+  --background: #432e6f;
+  --primary: #f5e9ce;
+  --secondary: #bc2d29;
+  --tertiay: #450e15;
+  --accent: #ffa102;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+body {
+  font-family: RobotoRegular;
+  position: relative;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+button {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+img,
+svg {
+  width: 100%;
+}
+
+main {
+  width: 90%;
+  margin-inline: auto;
+  position: relative;
+  padding-top: 4.3rem;
+  overflow-x: hidden;
+}
+
+.board {
+  display: grid;
+  place-items: center;
+  max-width: 22rem;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  border: 1px solid;
+  border-collapse: collapse;
+  gap: 0.3rem;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+
+  gap: 0.3rem;
+
+  &:last-of-type {
+    border: none;
+  }
+}
+
+.cell {
+  width: 100%;
+  min-height: 100px;
+  text-align: center;
+  font-size: 3rem;
+  background-color: var(--primary);
+  color: var(--secondary);
+
+  &:last-of-type {
+    border: none;
+  }
+}
+
+dialog {
+  top: 20%;
+  left: 50%;
+  width: 70%;
+  max-width: 30rem;
+  translate: -50% 0;
+  border: none;
+  border-radius: 10px;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.modal {
+  min-height: 30vh;
+  padding: 1rem;
+}
+
+.new-game {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--tertiay);
+  color: var(--primary);
+  padding: 0.7rem 1.375rem;
+  border-radius: 0.5rem;
+  text-transform: capitalize;
+}
+
+.turn {
+  background-color: var(--accent);
+  color: var(--primary);
+  width: fit-content;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.3rem;
+  padding: 0.5rem;
+  margin-inline: auto;
+  border-radius: 0.4rem;
+}
+
+.player {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  transition: background-color 0.4s cubic-bezier(0.55, 0, 1, 0.45);
+
+  &[data-active='true'] {
+    background-color: var(--primary);
+    color: var(--accent);
+  }
+}
+
+.no-clicks {
+  pointer-events: none;
+}
+
+@media (min-width: 47.8125rem) {
+  main {
+    padding: 0;
+  }
+}
