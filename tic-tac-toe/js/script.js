@@ -37,10 +37,6 @@ function Gameboard() {
     // console.log(board);
   };
 
-  const printBoard = () => {
-    board.forEach((row) => {});
-  };
-
   const checkWinner = (players) => {
     let [rowSum, colSum, diag1Sum, diag2Sum] = Array(4).fill('');
 
@@ -105,17 +101,13 @@ function Gameboard() {
   return {
     getBoard,
     claimCell,
-    printBoard,
     checkWinner,
     isBoardFull,
     resetBoard,
   };
 }
 
-function GameController(
-  playerOneName = 'Player One',
-  playerTwoName = 'Computer'
-) {
+function GameController(playerOneName = 'You', playerTwoName = 'Computer') {
   const board = Gameboard();
 
   const dialog = document.querySelector('#game-modal');
@@ -160,8 +152,6 @@ function GameController(
   const playRound = (row, column) => {
     const modal = dialog.querySelector('.modal');
 
-    const modalBtn = modal.querySelector('button');
-
     const modalText = modal.querySelector('p');
 
     // claim cell
@@ -175,7 +165,7 @@ function GameController(
 
       dialog.showModal();
 
-      modalText.innerHTML = `${winner.name} Wins!!!!`;
+      modalText.innerHTML = `${winner.name} Win!!!!`;
 
       // board.resetBoard();
 
@@ -203,10 +193,6 @@ function GameController(
     // switch players
     switchPlayerTurn();
 
-    modalBtn.addEventListener('click', () => {
-      board.resetBoard();
-      dialog.close();
-    });
     return false;
   };
 
@@ -233,6 +219,8 @@ function ScreenController() {
   const boardEl = document.querySelector('.board');
 
   const newGameBtn = document.querySelector('.new-game');
+
+  const modalBtn = document.querySelector('#game-modal button');
 
   const updateScreen = () => {
     // clear the board
@@ -273,9 +261,12 @@ function ScreenController() {
         cellBtn.addEventListener('click', function () {
           if (column.getValue()) return;
           const gameEnd = game.playRound(rowIndex, index);
+
           updateScreen();
 
-          if (!gameEnd) {
+          // update active player variable
+          activePlayer = game.getActivePlayer();
+          if (!gameEnd && activePlayer.name === 'Computer') {
             computerPlayer();
           }
         });
@@ -313,6 +304,8 @@ function ScreenController() {
   };
 
   newGameBtn.addEventListener('click', restartGame);
+
+  modalBtn.addEventListener('click', restartGame);
 
   updateScreen();
 }

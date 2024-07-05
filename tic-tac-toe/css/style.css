@@ -59,7 +59,7 @@ main {
   max-width: 22rem;
   margin: 2rem auto;
   padding: 2rem 1rem;
-  border: 1px solid;
+  /* border: 1px solid; */
   border-collapse: collapse;
   gap: 0.3rem;
 }
@@ -82,10 +82,20 @@ main {
   font-size: 3rem;
   background-color: var(--primary);
   color: var(--secondary);
+  transition: all 0.3s cubic-bezier(0, 0.55, 0.45, 1);
 
   &:last-of-type {
     border: none;
   }
+
+  &:empty:hover {
+    transform: rotateY(180deg);
+  }
+}
+
+h1 {
+  text-align: center;
+  margin-block: 1rem;
 }
 
 dialog {
@@ -98,15 +108,41 @@ dialog {
   border-radius: 10px;
 }
 
+#game-modal {
+  width: 50%;
+  top: 35%;
+  max-width: 20rem;
+}
+
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.3);
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
 }
 
+#game-modal::backdrop {
+  -webkit-backdrop-filter: blur(1.5px);
+  backdrop-filter: blur(1.5px);
+}
+
 .modal {
-  min-height: 30vh;
+  /* min-height: 30vh; */
   padding: 1rem;
+  text-align: center;
+
+  p {
+    font-size: 1.3rem;
+  }
+
+  button {
+    text-transform: capitalize;
+    margin-top: 1rem;
+    background-color: var(--background);
+    color: var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+  }
 }
 
 .new-game {
