@@ -29,6 +29,31 @@ body {
   color: var(--foreground);
 }
 
+body::before {
+  --size: 70px;
+  --line: color-mix(in lch, canvasText 10%, hsl(0 0% 100% / 0.25));
+
+  content: '';
+  height: 100vh;
+  position: fixed;
+  background: linear-gradient(
+        90deg,
+        var(--line) 1px,
+        transparent 1px var(--size)
+      )
+      50% 50% / var(--size) var(--size),
+    linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% /
+      var(--size) var(--size);
+  mask: linear-gradient(-65deg, transparent 15%, white);
+  top: 0;
+  transform-style: flat;
+  pointer-events: none;
+  z-index: 1000;
+  width: 100%;
+
+  opacity: 0.7;
+}
+
 button {
   background-color: inherit;
   border: none;
@@ -43,6 +68,35 @@ button:hover {
 img,
 svg {
   width: 100%;
+}
+
+dialog {
+  --opacity: 0;
+
+  scale: 0.5;
+
+  &,
+  &::backdrop {
+    opacity: var(--opacity);
+    transition: all 0.7s ease-in-out allow-discrete;
+  }
+
+  &:where([open]) {
+    --opacity: 1;
+    scale: 1;
+  }
+}
+
+/* not supported in firefox yet */
+@starting-style {
+  dialog:where([open]) {
+    --opacity: 0;
+    scale: 0.5;
+  }
+
+  dialog:where([open])::backdrop {
+    --opacity: 0;
+  }
 }
 
 main {
@@ -83,14 +137,91 @@ main {
   background-color: var(--primary);
   color: var(--secondary);
   transition: all 0.3s cubic-bezier(0, 0.55, 0.45, 1);
+  mask: linear-gradient(135deg, #000c 40%, #000, #000c 60%) 100% 100%/250% 250%;
 
   &:last-of-type {
     border: none;
   }
 
-  &:empty:hover {
-    transform: rotateY(180deg);
+  &:hover {
+    mask-position: 0 0;
   }
+}
+
+/* WELCOME SCREEN SECTION */
+
+.initial-modal {
+  width: 80%;
+  max-width: 20rem;
+  padding: 1rem 0.5rem;
+}
+
+.initial-modal h2 {
+  text-align: center;
+}
+
+.initial-modal-form {
+  display: grid;
+  gap: 1.3rem;
+  width: 90%;
+  margin-inline: auto;
+}
+
+.player-choice-group {
+  display: flex;
+  margin-block: 1rem;
+  gap: 1rem;
+  background-color: var(--background);
+  color: var(--primary);
+  padding: 0.2rem;
+  width: fit-content;
+  margin-inline: auto;
+  border-radius: 0.1rem;
+}
+
+.player-choice input[type='radio'] {
+  display: none;
+}
+
+.button {
+  border-radius: 0.5rem;
+  display: block;
+  padding: 0.6rem 1rem;
+  text-transform: capitalize;
+  font-size: 1.1rem;
+}
+
+.player-choice {
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.player-choice:has(:checked) {
+  background-color: var(--primary);
+  color: var(--tertiay);
+}
+
+.player-name {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  input {
+    width: 100%;
+    height: 35px;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.5rem;
+    outline: none;
+    border: 1px solid;
+  }
+}
+
+.player-two-name {
+  display: none;
+}
+
+.player-choice-group:has(#friend:checked) ~ .player-two-name {
+  display: flex;
 }
 
 h1 {
@@ -106,6 +237,11 @@ dialog {
   translate: -50% 0;
   border: none;
   border-radius: 10px;
+}
+
+.start-game-btn {
+  background-color: var(--secondary);
+  color: white;
 }
 
 #game-modal {

@@ -16,19 +16,35 @@
 
   <main>
 
-    <section class="start">
+    <!-- WELCOME SCREEN -->
+    <section class="initial-screen">
 
-      <dialog id="start-modal">
+      <dialog class="initial-modal">
+        <h2>Tic tac toe Game!!</h2>
+        <form class="initial-modal-form">
 
-        <h2>A Simple Tic tac toe Game!!</h2>
+          <div class="player-choice-group">
+            <label class="player-choice button">
+              <input type="radio" value="bot" name="player-choice" id="bot" checked>
+              Play vs Bot
+            </label>
 
-        <p>Before proceeding please input your name</p>
+            <label class="player-choice button">
+              <input type="radio" value="friend" name="player-choice" id="friend">
+              Play vs Friend
+            </label>
+          </div>
 
+          <label class="player-one-name player-name">
+            Player one name
+            <input type="text" name="player-one-name" id="player-one-name" placeholder="John doe" />
+          </label>
 
-        <form method="dialog">
-          <input type="text" name="user-name" id="user-name" placeholder="Zee" />
-
-          <button type="submit">proceed</button>
+          <label class="player-two-name player-name">
+            Player two name
+            <input type="text" name="player-two-name" id="player-two-name" placeholder="John doe" />
+          </label>
+          <button type="submit" class="start-game-btn button">start game</button>
         </form>
 
       </dialog>
@@ -50,14 +66,19 @@
       <div class="board"></div>
     </section>
 
+    <section class="top">
+      <div class="scores"></div>
+    </section>
 
     <!-- MODAL DIALOG -->
 
     <dialog id="game-modal">
       <form class="modal" method="dialog">
-        <p>hello world</p>
+        <p></p>
 
-        <button>replay</button>
+        <button>play again</button>
+        <button class="settings-btn">settings</button>
+
       </form>
     </dialog>
   </main>

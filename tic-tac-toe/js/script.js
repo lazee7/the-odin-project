@@ -19,8 +19,6 @@ function Gameboard() {
   const columns = 3;
   const board = [];
 
-  const winningCombinations = ['xxx', 'ooo'];
-
   const getBoard = () => board;
 
   /**
@@ -37,14 +35,134 @@ function Gameboard() {
     // console.log(board);
   };
 
-  const checkWinner = (players) => {
+  const resetBoard = () => {
+    for (let i = 0; i < rows; i++) {
+      board[i] = [];
+
+      for (let j = 0; j < columns; j++) {
+        board[i].push(Cell());
+      }
+    }
+  };
+
+  return {
+    getBoard,
+    claimCell,
+    resetBoard,
+  };
+}
+
+function GameController(playerOneName = 'Player', playerTwoName = 'Computer') {
+  const board = Gameboard();
+
+  const dialog = document.querySelector('#game-modal');
+  // modal container
+
+  const players = [
+    {
+      name: playerOneName,
+      token: 'x',
+      score: 0,
+    },
+
+    {
+      name: playerTwoName,
+      token: 'o',
+      score: 0,
+    },
+  ];
+  let activePlayer = players[0];
+
+  const switchPlayerTurn = () => {
+    activePlayer = activePlayer === players[0] ? players[1] : players[0];
+  };
+
+  const updatePlayerName = (value, index) => {
+    players[index].name = value;
+
+    if (activePlayer.token === players[index].token) {
+      activePlayer = players[index];
+    }
+  };
+
+  const getActivePlayer = () => activePlayer;
+
+  const getPlayers = () => players;
+
+  const incrementScore = (index) => {
+    players[index].score += 1;
+  };
+
+  const playRound = (row, column) => {
+    const modal = dialog.querySelector('.modal');
+
+    const modalText = modal.querySelector('p');
+
+    // claim cell
+    board.claimCell(row, column, activePlayer.token);
+
+    // check for winner
+    const winner = checkWinner();
+
+    if (winner) {
+      // end game
+
+      dialog.showModal();
+
+      const winnerIndex = players.findIndex(
+        (player) => player.token === winner.token
+      );
+      incrementScore(winnerIndex);
+      modalText.innerHTML = `${winner.name} Wins!!!!`;
+
+      return true;
+    }
+
+    // check if board is full and call draw
+
+    const isDraw = isBoardFull();
+
+    if (isDraw) {
+      //end game
+      dialog.showModal();
+
+      // increment both players score
+      incrementScore(0);
+      incrementScore(1);
+      modalText.innerHTML = 'The game has been drawn';
+      return true;
+    }
+
+    // switch players
+    switchPlayerTurn();
+
+    return false;
+  };
+
+  const gameBoard = board.getBoard();
+
+  dialog.addEventListener('click', function (event) {
+    if (event.target === dialog) {
+      dialog.close();
+    }
+  });
+
+  const resetGame = () => {
+    board.resetBoard();
+    activePlayer = players[0];
+  };
+
+  const checkWinner = () => {
+    const winningCombinations = ['xxx', 'ooo'];
+
+    const [rows, columns] = Array(2).fill(3);
     let [rowSum, colSum, diag1Sum, diag2Sum] = Array(4).fill('');
 
     // check rows and colums
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < columns; j++) {
-        rowSum += board[i][j].getValue();
-        colSum += board[j][i].getValue();
+        rowSum += gameBoard[i][j].getValue();
+        colSum += gameBoard[j][i].getValue();
       }
 
       if (winningCombinations.includes(rowSum)) {
@@ -62,8 +180,8 @@ function Gameboard() {
 
     // check diagonals
     for (let i = 0; i < rows; i++) {
-      diag1Sum += board[i][i].getValue();
-      diag2Sum += board[i][rows - 1 - i].getValue();
+      diag1Sum += gameBoard[i][i].getValue();
+      diag2Sum += gameBoard[i][rows - 1 - i].getValue();
     }
 
     if (winningCombinations.includes(diag1Sum)) {
@@ -80,141 +198,27 @@ function Gameboard() {
   };
 
   const isBoardFull = () => {
-    for (let row of board) {
+    for (let row of gameBoard) {
       if (row.some((cell) => cell.getValue() === '')) return false;
     }
     return true;
   };
 
-  const resetBoard = () => {
-    for (let i = 0; i < rows; i++) {
-      board[i] = [];
-
-      for (let j = 0; j < columns; j++) {
-        board[i].push(Cell());
-      }
-    }
-  };
-
-  resetBoard();
-
   return {
-    getBoard,
-    claimCell,
-    checkWinner,
-    isBoardFull,
-    resetBoard,
+    getActivePlayer,
+    playRound,
+    gameBoard,
+    updatePlayerName,
+    resetGame,
   };
-}
-
-function GameController(playerOneName = 'You', playerTwoName = 'Computer') {
-  const board = Gameboard();
-
-  const dialog = document.querySelector('#game-modal');
-  // modal container
-
-  const players = [
-    {
-      name: playerOneName,
-      token: 'x',
-    },
-
-    {
-      name: playerTwoName,
-      token: 'o',
-    },
-  ];
-  let activePlayer = players[0];
-
-  const switchPlayerTurn = () => {
-    activePlayer = activePlayer === players[0] ? players[1] : players[0];
-  };
-
-  const updatePlayerName = (value, index) => {
-    players[index].name = value;
-
-    if (activePlayer.token === players[index].token) {
-      activePlayer = players[index];
-    }
-  };
-  const generateRandomIndex = (length) => {
-    return Math.floor(Math.random() * length);
-  };
-
-  // reset player for new game
-  const shufflePlayerTurn = (length) => {
-    const randomIndex = generateRandomIndex(length);
-    return players[randomIndex];
-  };
-
-  const getActivePlayer = () => activePlayer;
-
-  const playRound = (row, column) => {
-    const modal = dialog.querySelector('.modal');
-
-    const modalText = modal.querySelector('p');
-
-    // claim cell
-    board.claimCell(row, column, activePlayer.token);
-
-    // check for winner
-    const winner = board.checkWinner(players);
-
-    if (winner) {
-      // end game
-
-      dialog.showModal();
-
-      modalText.innerHTML = `${winner.name} Win!!!!`;
-
-      // board.resetBoard();
-
-      activePlayer = shufflePlayerTurn(players.length);
-
-      return true;
-    }
-
-    // check if board is full and call draw
-
-    const isDraw = board.isBoardFull();
-
-    if (isDraw) {
-      //end game
-      dialog.showModal();
-
-      modalText.innerHTML = 'The game has been drawn';
-
-      // board.resetBoard();
-      activePlayer = shufflePlayerTurn(players.length);
-
-      return true;
-    }
-
-    // switch players
-    switchPlayerTurn();
-
-    return false;
-  };
-
-  const getBoard = board.getBoard();
-
-  dialog.addEventListener('click', function (event) {
-    if (event.target === dialog) {
-      dialog.close();
-    }
-  });
-
-  const resetGame = () => {
-    board.resetBoard();
-  };
-
-  return { getActivePlayer, playRound, getBoard, updatePlayerName, resetGame };
 }
 
 function ScreenController() {
   const game = GameController();
 
-  const board = game.getBoard;
+  let bot = true;
+
+  const board = game.gameBoard;
 
   const boardEl = document.querySelector('.board');
 
@@ -222,13 +226,32 @@ function ScreenController() {
 
   const modalBtn = document.querySelector('#game-modal button');
 
-  const updateScreen = () => {
-    // clear the board
-    boardEl.innerHTML = '';
-
+  const updateScreen = (initial = false, gameData = null) => {
     const playerOne = document.querySelector('.player-one');
 
     const playerTwo = document.querySelector('.player-two');
+    // on game start
+    if (initial) {
+      if (!gameData.bot && gameData) {
+        bot = false;
+        game.updatePlayerName(gameData.playerTwoName || 'Player2', 1);
+        playerTwo.textContent = `${gameData.playerTwoName || 'Player2'}(o)`;
+      }
+
+      if (gameData.bot) {
+        bot = true;
+        game.updatePlayerName('Computer', 1);
+        playerTwo.textContent = 'Computer(o)';
+      }
+
+      if (gameData.playerOneName) {
+        game.updatePlayerName(gameData.playerOneName, 0);
+        playerOne.textContent = `${gameData.playerOneName}(x)`;
+      }
+    }
+
+    // clear the board
+    boardEl.innerHTML = '';
 
     let activePlayer = game.getActivePlayer();
 
@@ -266,7 +289,7 @@ function ScreenController() {
 
           // update active player variable
           activePlayer = game.getActivePlayer();
-          if (!gameEnd && activePlayer.name === 'Computer') {
+          if (bot && !gameEnd && activePlayer.name === 'Computer') {
             computerPlayer();
           }
         });
@@ -303,11 +326,45 @@ function ScreenController() {
     updateScreen();
   };
 
+  const initialModal = document.querySelector('.initial-modal');
+
+  const form = initialModal.querySelector('form');
+
+  const initialScreen = () => {
+    initialModal.showModal();
+  };
+
+  const settingsBtn = document.querySelector('.settings-btn');
+
+  settingsBtn.addEventListener('click', () => {
+    initialModal.showModal();
+  });
+
   newGameBtn.addEventListener('click', restartGame);
 
   modalBtn.addEventListener('click', restartGame);
 
-  updateScreen();
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+
+    const playerOneName = formData.get('player-one-name');
+    const playerTwoName = formData.get('player-two-name');
+
+    const playerChoice = formData.get('player-choice');
+
+    const gameData = {
+      bot: playerChoice === 'bot' ? true : false,
+      playerOneName,
+      playerTwoName,
+    };
+
+    game.resetGame();
+    updateScreen(true, gameData);
+    initialModal.close();
+  });
+
+  initialScreen();
 }
 
 ScreenController();
