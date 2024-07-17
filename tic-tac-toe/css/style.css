@@ -146,6 +146,14 @@ main {
   &:hover {
     mask-position: 0 0;
   }
+
+  &.x {
+    color: var(--tertiay);
+  }
+
+  &.o {
+    color: var(--secondary);
+  }
 }
 
 /* WELCOME SCREEN SECTION */

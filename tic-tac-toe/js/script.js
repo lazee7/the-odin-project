@@ -273,11 +273,17 @@ function ScreenController() {
 
       row.forEach((column, index) => {
         const cellBtn = document.createElement('button');
+
+        const cellContent = column.getValue();
         cellBtn.classList.add('cell');
+
+        if (cellContent) {
+          cellBtn.classList.add(cellContent);
+        }
         cellBtn.dataset.column = index;
         cellBtn.dataset.row = rowIndex;
 
-        cellBtn.textContent = column.getValue();
+        cellBtn.textContent = cellContent;
 
         rowEl.appendChild(cellBtn);
 
